@@ -1,0 +1,62 @@
+{
+  "name": "dcom",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "prebuild": "cpy ./node_modules/@tbeach/cuifcrenderer/dist/web-ifc.wasm public/;cpy ./node_modules/@tbeach/cuifcrenderer/dist/web-ifc-mt.wasm public/; cpy ./node_modules/@tbeach/cuifcrenderer/dist/IFCWorker.js public/; cpy ./node_modules/@tbeach/cuifcrenderer/dist/IFCWorker.js.map public/;",
+    "preserve": "cpy ./node_modules/@tbeach/cuifcrenderer/dist/web-ifc.wasm public/;cpy ./node_modules/@tbeach/cuifcrenderer/dist/web-ifc-mt.wasm public/; cpy ./node_modules/@tbeach/cuifcrenderer/dist/IFCWorker.js public/; cpy ./node_modules/@tbeach/cuifcrenderer/dist/IFCWorker.js.map public/;",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@dsb-norge/vue-keycloak-js": "*",
+    "@forevolve/bootstrap-dark": "*",
+    "@tbeach/cuifcrenderer": "^0.1.7",
+    "axios": "^0.22.0",
+    "bootstrap-vue": "^2.21.2",
+    "bootstrap-vue-treeview": "^1.0.8",
+    "chart.js": "^2.9.4",
+    "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
+    "npm": "^8.3.0",
+    "sweetalert2": "^11.1.4",
+    "vue": "^2.6.11",
+    "vue-async-computed": "^3.9.0",
+    "vue-chartjs": "^3.5.1",
+    "vue-clipboard2": "^0.3.3",
+    "vue-form-wizard": "^0.8.4",
+    "vue-router": "^3.5.2",
+    "downloadjs":"^1.4.7"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-service": "^4.5.13",
+    "babel-eslint": "^10.1.0",
+    "coa": "2.0.2",
+    "cpy-cli": "^3.1.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^7.18.0",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

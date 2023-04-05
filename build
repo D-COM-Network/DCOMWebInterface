@@ -1,0 +1,27 @@
+#!/bin/bash
+UNAME=$(uname)
+if [[ "$UNAME" == "CYGWIN"* || "$UNAME" == "MINGW"* ]] ; then
+    alias docker='winpty docker'
+fi
+REGISTRY_PATH="registry.git.cf.ac.uk/dcom_cih"
+docker login $REGISTRY_PATH	
+cd dcom
+if [ ! -d "./node_modules" ] 
+then
+  npm install
+fi
+npm ci
+npm run build
+cd ..
+if [[ $(uname -m) == 'arm64' ]]; then
+	docker buildx build --platform linux/amd64 --push -t $REGISTRY_PATH/webinterface .
+elif [[ "$UNAME" == "CYGWIN"* || "$UNAME" == "MINGW"* ]] ; then
+  docker build -t $REGISTRY_PATH/webinterface -f Dockerfile_Windows .
+  docker push $REGISTRY_PATH/webinterface
+else
+  docker build -t $REGISTRY_PATH/webinterface .
+  docker push $REGISTRY_PATH/webinterface
+fi
+cd dcom
+rm -rf dist
+cd ..
